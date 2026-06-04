@@ -400,6 +400,3 @@ DS 2026/
 - [Target Encoding](https://contrib.scikit-learn.org/category_encoders/targetencoder.html)
 - [Optuna TPE Sampler](https://optuna.readthedocs.io/en/stable/reference/samplers/generated/optuna.samplers.TPESampler.html)
 
-### Dataset
-
-- [BigMart Sales — Analytics Vidhya](https://datahack.analyticsvidhya.com/contest/practice-problem-big-mart-sales-iii/)
