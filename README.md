@@ -182,6 +182,3 @@ Para el chat agente, obtené tu API Key en [console.anthropic.com](https://conso
 - [Target Encoding](https://contrib.scikit-learn.org/category_encoders/targetencoder.html) — Encoding sin data leakage
 - [Cross-validation strategies](https://scikit-learn.org/stable/modules/cross_validation.html) — KFold con OOF predictions
 
-### Dataset
-
-- [BigMart Sales Dataset — Analytics Vidhya](https://datahack.analyticsvidhya.com/contest/practice-problem-big-mart-sales-iii/) — Fuente original del dataset de entrenamiento y test
