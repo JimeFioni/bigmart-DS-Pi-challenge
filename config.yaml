@@ -1,0 +1,71 @@
+# ─────────────────────────────────────────────────────────────
+# BigMart Sales — Configuración del pipeline de entrenamiento
+# ─────────────────────────────────────────────────────────────
+
+data:
+  train_path: Train_BigMart.csv
+  test_path:  Test_BigMart.csv
+  output_path: predictions_test.csv
+
+mlflow:
+  tracking_uri: mlruns          # carpeta local; cambiar a una URI remota si usás un servidor MLflow
+  experiment_name: bigmart-sales-prediction
+
+optuna:
+  n_trials: 30                  # aumentar a 100+ para producción
+
+  search_space:
+    xgboost:
+      n_estimators:      [100, 600]
+      max_depth:         [3, 10]
+      learning_rate:     [0.01, 0.3]
+      subsample:         [0.6, 1.0]
+      colsample_bytree:  [0.6, 1.0]
+      reg_alpha:         [1.0e-8, 10.0]
+      reg_lambda:        [1.0e-8, 10.0]
+      min_child_weight:  [1, 20]
+
+    lgbm:
+      n_estimators:       [100, 600]
+      max_depth:          [3, 12]
+      learning_rate:      [0.01, 0.3]
+      num_leaves:         [20, 150]
+      subsample:          [0.6, 1.0]
+      colsample_bytree:   [0.6, 1.0]
+      reg_alpha:          [1.0e-8, 10.0]
+      reg_lambda:         [1.0e-8, 10.0]
+      min_child_samples:  [5, 50]
+
+models:
+  xgboost:
+    default_params:           # usado con --no-optuna
+      n_estimators: 500
+      max_depth: 6
+      learning_rate: 0.05
+      subsample: 0.8
+      colsample_bytree: 0.8
+      reg_alpha: 0.1
+      reg_lambda: 1.0
+      min_child_weight: 5
+      random_state: 42
+      n_jobs: -1
+      verbosity: 0
+
+  lgbm:
+    default_params:
+      n_estimators: 500
+      max_depth: 8
+      learning_rate: 0.05
+      num_leaves: 63
+      subsample: 0.8
+      colsample_bytree: 0.8
+      reg_alpha: 0.1
+      reg_lambda: 1.0
+      min_child_samples: 20
+      random_state: 42
+      n_jobs: -1
+      verbose: -1
+
+cross_validation:
+  n_splits: 5
+  seed: 42
